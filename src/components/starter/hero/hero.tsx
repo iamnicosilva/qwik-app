@@ -1,82 +1,31 @@
-import { component$ } from "@builder.io/qwik";
-import styles from "./hero.module.css";
-import ImgThunder from "~/media/thunder.png?jsx";
+import { component$ } from '@builder.io/qwik';
 
 export default component$(() => {
   return (
-    <div class={["container", styles.hero]}>
-      <ImgThunder class={styles["hero-image"]} />
-      <h1>
-        So <span class="highlight">fantastic</span>
-        <br />
-        to have <span class="highlight">you</span> here
-      </h1>
-      <p>Have fun building your App with Qwik.</p>
-      <div class={styles["button-group"]}>
-        <button
-          onClick$={async () => {
-            const defaults = {
-              spread: 360,
-              ticks: 70,
-              gravity: 0,
-              decay: 0.95,
-              startVelocity: 30,
-              colors: ["006ce9", "ac7ff4", "18b6f6", "713fc2", "ffffff"],
-              origin: {
-                x: 0.5,
-                y: 0.35,
-              },
-            };
+    <div class={['container']}>
 
-            function loadConfetti() {
-              return new Promise<(opts: any) => void>((resolve, reject) => {
-                if ((globalThis as any).confetti) {
-                  return resolve((globalThis as any).confetti as any);
-                }
-                const script = document.createElement("script");
-                script.src =
-                  "https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js";
-                script.onload = () =>
-                  resolve((globalThis as any).confetti as any);
-                script.onerror = reject;
-                document.head.appendChild(script);
-                script.remove();
-              });
-            }
+      <div class=" py-16 px-4 md:px-0">
+        <div class="container mx-auto">
+          <h1 class="text-white text-left text-3xl md:text-5xl font-bold leading-tight mb-8 md:mb-12 max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-4xl">
+            Conectando al ecosistema IA
+          </h1>
+          <div class="mt-6 max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1">
+            <p class="text-left text-lg leading-8">La Sociedad Argentina de Inteligencia Artificial es una organización independiente, sin fines de lucro dedicada a hacer investigaciones, generar encuentros, fortalecer los nuevos medios de educación y conscientizar a la sociedad sobre el desarrollo ético de la IA.</p>
+            <div class="hidden mt-10 lg:flex lg:gap-x-12 lg:flex-1 lg:items-center lg:justify-start">
+              <a href="mailto:comunidad@saia.ar" class="rounded-full bg-transparent px-5 py-3 text-md font-semibold text-white shadow-sm ring-2 ring-inset ring-white hover:bg-white hover:text-black">Ser Parte</a>
+            </div>
+          </div>
 
-            const confetti = await loadConfetti();
+        </div>
 
-            function shoot() {
-              confetti({
-                ...defaults,
-                particleCount: 80,
-                scalar: 1.2,
-              });
 
-              confetti({
-                ...defaults,
-                particleCount: 60,
-                scalar: 0.75,
-              });
-            }
 
-            setTimeout(shoot, 0);
-            setTimeout(shoot, 100);
-            setTimeout(shoot, 200);
-            setTimeout(shoot, 300);
-            setTimeout(shoot, 400);
-          }}
-        >
-          Time to celebrate
-        </button>
-        <a
-          href="https://qwik.builder.io/docs"
-          target="_blank"
-          class="button button-dark"
-        >
-          Explore the docs
-        </a>
       </div>
+
     </div>
+
+
+
+
   );
 });

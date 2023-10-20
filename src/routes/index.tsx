@@ -1,29 +1,47 @@
-import { component$ } from "@builder.io/qwik";
-import type { DocumentHead } from "@builder.io/qwik-city";
+import { component$ } from '@builder.io/qwik';
+import type { DocumentHead } from '@builder.io/qwik-city';
+import Hero from '~/components/starter/hero/hero';
+import Starter from '~/components/starter/next-steps/next-steps';
+import Values from '~/components/starter/values/values';
+import Brandquestions from '~/components/starter/brandquestions/brandquestions';
+// import { Image } from '@unpic/qwik'
 
-import Counter from "~/components/starter/counter/counter";
-import Hero from "~/components/starter/hero/hero";
-import Infobox from "~/components/starter/infobox/infobox";
-import Starter from "~/components/starter/next-steps/next-steps";
+import { routeAction$, zod$, z } from '@builder.io/qwik-city';
+
+export const useAddUser = routeAction$(
+  async (user) => {
+    // `user` is typed { name: string }
+    const userID = user.name;
+    return {
+      success: true,
+      userID,
+    };
+  },
+  zod$({
+    name: z.string(),
+  })
+);
 
 export default component$(() => {
   return (
     <>
       <Hero />
       <Starter />
-
+      <Brandquestions />
+      <Values />
       <div role="presentation" class="ellipsis"></div>
+      {/* <Image src="https://assets.saia.ar/saia/gr1.webp"
+        layout="constrained"
+        width={2830}
+        height={1500}
+        class="inset-0 w-full rotate-90 h-full object-fill object-center absolute z-[-1]"
+        alt="SAIA Brand Gradient 3"
+      /> */}
       <div role="presentation" class="ellipsis ellipsis-purple"></div>
 
-      <div class="container container-center container-spacing-xl">
-        <h3>
-          You can <span class="highlight">count</span>
-          <br /> on me
-        </h3>
-        <Counter />
-      </div>
 
-      <div class="container container-flex">
+
+      {/* <div class="container container-flex">
         <Infobox>
           <div q:slot="title" class="icon icon-cli">
             CLI Commands
@@ -58,7 +76,7 @@ export default component$(() => {
               Example Apps
             </div>
             <p>
-              Have a look at the <a href="/demo/flower">Flower App</a> or the{" "}
+              Have a look at the <a href="/demo/flower">Flower App</a> or the{' '}
               <a href="/demo/todolist">Todo App</a>.
             </p>
           </Infobox>
@@ -96,17 +114,17 @@ export default component$(() => {
             </ul>
           </Infobox>
         </div>
-      </div>
+      </div> */}
     </>
   );
 });
 
 export const head: DocumentHead = {
-  title: "Welcome to Qwik",
+  title: 'Sociedad Argentina de Inteligencia Artificial',
   meta: [
     {
-      name: "description",
-      content: "Qwik site description",
+      name: 'description',
+      content: 'SAIA - Sociedad Argentina de Inteligencia Artificial',
     },
   ],
 };
