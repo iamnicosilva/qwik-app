@@ -11,3 +11,7 @@ services:
 
 volumes:
   node_modules_cache:
+
+# Mount local volume to /app for hot reloading
+# Cache node_modules for faster setting up
+# Overwrite run command to install missing dependencies and run npm run dev instead
